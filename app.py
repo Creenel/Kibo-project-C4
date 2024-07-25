@@ -14,6 +14,10 @@ fbConfig = {
   "measurementId": "G-XFHXVES630",
   "databaseURL":"https://kibo-project-8ea43-default-rtdb.europe-west1.firebasedatabase.app/"}
 
+firebase = pyrebase.initialize_app(fbConfig)
+auth = firebase.auth()
+db = firebase.database()
+
 if (__name__) == "__main__":
 	app.run(debug = True)
 
