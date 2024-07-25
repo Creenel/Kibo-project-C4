@@ -12,7 +12,7 @@ fbConfig = {
   "messagingSenderId": "1010392688942",
   "appId": "1:1010392688942:web:b334a7bf76efa442e8f2bf",
   "measurementId": "G-XFHXVES630",
-  "databaseURL":""}
+  "databaseURL":"https://kibo-project-8ea43-default-rtdb.europe-west1.firebasedatabase.app/"}
 
 if (__name__) == "__main__":
 	app.run(debug = True)
