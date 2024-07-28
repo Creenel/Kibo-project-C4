@@ -18,6 +18,9 @@ firebase = pyrebase.initialize_app(fbConfig)
 auth = firebase.auth()
 db = firebase.database()
 
+@app.route("/volunteer", methods = ["GET","POST"])
+def volunteer():
+
+
 if (__name__) == "__main__":
 	app.run(debug = True)
-
