@@ -1,14 +1,67 @@
+<!DOCTYPE html>
 <html>
-<body>
-	<a href = "/">Back</a>
-   <p>
-   		Kibo MEET is meant for displaced communities, war evacuees, and bilingual (Israeli+Palestinian) groups!
-      Want Kibo MEET to come to your school, kindergarten or group? Tell us about your community, location and info!
-   </p>
-   <a href="mailto:kibomeetmail@gmail.com?subject=Invite%20KIBO%20to%20your%20community&body=Please%20name%20your%20community%20and%20personal%20info"> 
-      Invite Kibo MEET
-   </a>
-   <p>(This might take a few moments)</p>
-</body>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f7f7f7;
+            height: 100vh;
+        }
 
+        p {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 60%;
+            margin: 20px 0;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        a {
+            background-color: #800080;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        a:hover {
+            background-color: #6a006a;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .small-text {
+            color: #888888;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-button">Back</a>
+    <p>Kibo MEET is meant for displaced communities, war evacuees, and bilingual (Israeli+Palestinian) groups!
+        Want Kibo MEET to come to your school, kindergarten or group? Tell us about your community, location and info!</p>
+    <a href="mailto:kibomeetmail@gmail.com?subject=Invite%20KIBO%20to%20your%20community&body=Please%20name%20your%20community%20and%20personal%20info"> 
+        Invite Kibo MEET
+    </a>
+    <p class="small-text">(This might take a few moments)</p>
+</body>
 </html>
