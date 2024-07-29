@@ -20,7 +20,21 @@ db = firebase.database()
 
 @app.route("/volunteer", methods = ["GET","POST"])
 def volunteer():
+    return render_template("volunteer.html")
+
+@app.route("/main", methods = ["GET","POST"])
+def volunteer():
+    return render_template("main.html")
+
+@app.route("/about", methods = ["GET","POST"])
+def volunteer():
+    return render_template("about.html")
+    
+@app.route("/host", methods = ["GET","POST"])
+def volunteer():
+     return render_template("host.html")
 
 
 if (__name__) == "__main__":
-	app.run(debug = True)
+  app.run(debug = True)
+
