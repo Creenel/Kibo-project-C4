@@ -22,7 +22,8 @@ db = firebase.database()
 @app.route("/volunteer", methods = ["GET","POST"])
 def volunteer():
   if request.method == "POST":
-    session['user'] = auth.create_user_with_email_and_password(request.form['email'],request.form['password'])
+    user = auth.create_user_with_email_and_password(request.form['email'],request.form['password'])
+    session['user'] =user
     session['userID'] = session['user']["localId"]
     session['user']['name'] = request.form['full_name']
     session['user']['age'] = request.form['age']
