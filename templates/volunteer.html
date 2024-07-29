@@ -2,6 +2,21 @@
 <html>
 <head>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0.8; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -10,7 +25,8 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSn7Ci5NcCUSkcAk8VGoWFhLn_QUeaP03Fw&s")
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSn7Ci5NcCUSkcAk8VGoWFhLn_QUeaP03Fw&s");
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         form {
@@ -22,6 +38,7 @@
             flex-direction: column;
             align-items: center;
             width: 350px;
+            animation: fadeIn 1.5s ease-in-out, slideUp 0.5s ease-out;
         }
 
         input[type="text"],
@@ -34,6 +51,7 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+            animation: slideUp 0.5s ease-out;
         }
 
         .radio-group {
@@ -56,10 +74,13 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s;
+            animation: zoomIn 0.5s ease-out;
         }
 
         button:hover {
-            background-color: #e67e00;;
+            background-color: #e67e00;
+            transform: scale(1.05);
         }
 
         .link-button {
@@ -73,10 +94,13 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s;
+            animation: zoomIn 0.5s ease-out;
         }
 
         .link-button:hover {
             background-color: #e67e00;
+            transform: scale(1.05);
         }
 
         .back-button {
@@ -84,6 +108,7 @@
             top: 10px;
             left: 10px;
             background-color: #ff8c00;
+            animation: zoomIn 0.5s ease-out;
         }
 
         .back-button:hover {
