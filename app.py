@@ -1,7 +1,7 @@
 from flask import Flask, requests, render_template, redirect, url_for, session
 import pyrebase
 
-app = Flask(__name__,template_folder = 'templates', static_folder = "static")
+app = Flask(__name__, template_folder = 'templates', static_folder = "static")
 app.config["SECRET_KEY"] = "rotemthebest"
 
 fbConfig = {
@@ -18,6 +18,13 @@ firebase = pyrebase.initialize_app(fbConfig)
 auth = firebase.auth()
 db = firebase.database()
 
+@app.route("/volunteer", methods = ["GET","POST"])
+def volunteer():
+  if request.method == "POST":
+    #make session user and save in db
+  else:
+    return render_templae("volunteer.html")
+
+
 if (__name__) == "__main__":
 	app.run(debug = True)
-
