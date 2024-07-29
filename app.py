@@ -54,9 +54,21 @@ def signin():
   else:
     return render_template("signin.html")
 
+@app.route("/remove",methods = ["GET","POST"])
+def remove():
+  print(session["userID"])
+  db.child("Volunteers").child(session["userID"]).remove()
+  session['user'] = None
+  session['userID'] = None
+  auth.current_user = None
+  return redirect(url_for("main"))
+
+
 @app.route("/signout",methods = ["GET","POST"])
 def signout():
+  print(session["userID"])
   session['user'] = None
+  session['userID'] = None
   auth.current_user = None
   return redirect(url_for("main"))
 
