@@ -23,11 +23,12 @@ db = firebase.database()
 def volunteer():
   if request.method == "POST":
     user = auth.create_user_with_email_and_password(request.form['email'],request.form['password'])
+    user['name'] = request.form['full_name']
+    user['age'] = request.form['age']
+    user['language'] = request.form['language']
+    user['location'] = request.form['location']
     session['user'] =user
     session['userID'] = session['user']["localId"]
-    session['user']['name'] = request.form['full_name']
-    session['user']['age'] = request.form['age']
-    session['user']['language'] = request.form['language']
     db.child("Volunteers").child(session["userID"]).set(session['user'])
     return redirect(url_for("main"))
   else:
@@ -44,6 +45,20 @@ def about():
 @app.route("/host", methods = ["GET","POST"])
 def host():
      return render_template("host.html")
+
+@app.route("/signin", methods = ["GET","POST"])
+def signin():
+  if request.method == "POST":
+    session['user'] = auth.sign_in_with_email_and_password()
+    return redirect(url_for("main"))
+  else:
+    return render_template("signin.html")
+
+@app.route("/signout",methods = ["GET","POST"])
+def signout():
+  session['user'] = None
+  auth.current_user = None
+  return redirect(url_for("main"))
 
 
 if (__name__) == "__main__":
