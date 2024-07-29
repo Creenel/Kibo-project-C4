@@ -3,9 +3,20 @@
 <head>
 </head>
 <body>
+	<form method="POST" action="/volunteer">
+		<input type="text" name="full_ name" placeholder="Full name" required>
+		<input type="number" name="age" placeholder="age" required>
+		<input type="email" name="email" placeholder="Email_address" required>
+		<input type="password" name="password" placeholder="password" required>
+		<input type="text" name="location" placeholder="location" required>
+		<h2>Your main language:</h2>
+		<input type="radio" name="language" value = "Arabic" required>Arabic
+		<input type="radio" name="language" value = "Hebrew" required>Hebrew
+        <button name="submit" type="submit" value="HTML">SUBMIT</button>
+    </form>
+    	<a href = "/"> Back</a>
+
+
+
 </body>
 </html>
-
-#make an html form that posts to /volunteer. it should take full name, age, email, password, volunteering location, and a radio input for hebrew/arabic speaker
-#There should be a big submit button and a small button to return to the main page
-#Don't do CSS yet!

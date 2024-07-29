@@ -1,7 +1,8 @@
-from flask import Flask, requests, render_template, redirect, url_for, session
+
+from flask import Flask, request, render_template, redirect, url_for, session
 import pyrebase
 
-app = Flask(__name__, template_folder = 'templates', static_folder = "static")
+app = Flask(__name__,template_folder = 'templates', static_folder = "static")
 app.config["SECRET_KEY"] = "rotemthebest"
 
 fbConfig = {
@@ -21,10 +22,28 @@ db = firebase.database()
 @app.route("/volunteer", methods = ["GET","POST"])
 def volunteer():
   if request.method == "POST":
-    #make session user and save in db
+    session['user'] = auth.create_user_with_email_and_password(request.form['email'],request.form['password'])
+    session['userID'] = session['user']["localId"]
+    session['user']['name'] = request.form['full_name']
+    session['user']['age'] = request.form['age']
+    session['user']['language'] = request.form['language']
+    db.child("Volunteers").child(session["userID"]).set(session['user'])
+    return redirect(url_for("main"))
   else:
-    return render_templae("volunteer.html")
+    return render_template("volunteer.html")
+
+@app.route("/", methods = ["GET","POST"])
+def main():
+    return render_template("main.html")
+
+@app.route("/about", methods = ["GET","POST"])
+def about():
+    return render_template("about.html")
+    
+@app.route("/host", methods = ["GET","POST"])
+def host():
+     return render_template("host.html")
 
 
 if (__name__) == "__main__":
-	app.run(debug = True)
+  app.run(debug = True)
