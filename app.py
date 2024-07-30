@@ -48,8 +48,14 @@ def host():
 
 @app.route("/profile",methods = ["GET","POST"])
 def profile():
-  return render_template("profile.html", userdic = session['user'])
+  try:
+    return render_template("profile.html", userdic = session['user'])
+  except:
+    return redirect(url_for("error"))
 
+@app.route("/error")
+def error():
+  return render_template("error.html")
 @app.route("/pic", methods = ["GET","POST"])
 def pic():
   if request.method == "POST":
