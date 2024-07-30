@@ -46,6 +46,22 @@ def about():
 def host():
      return render_template("host.html")
 
+@app.route("/profile",methods = ["GET","POST"])
+def profile():
+  return render_template("profile.html", userdic = session['user'])
+
+@app.route("/pic", methods = ["GET","POST"])
+def pic():
+  if request.method == "POST":
+    db.child("Images").push(request.form["imgsrc"])
+    return redirect(url_for("gallery"))
+  else:
+    return render_template("pic.html")
+
+@app.route("/gallery", methods = ["GET","POST"])
+def gallery():
+  return render_template("gallery.html", imgdic = db.child("Images").get().val())
+
 @app.route("/signin", methods = ["GET","POST"])
 def signin():
   if request.method == "POST":
@@ -62,7 +78,6 @@ def remove():
   session['userID'] = None
   auth.current_user = None
   return redirect(url_for("main"))
-
 
 @app.route("/signout",methods = ["GET","POST"])
 def signout():
