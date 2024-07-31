@@ -49,7 +49,8 @@ def host():
 @app.route("/profile",methods = ["GET","POST"])
 def profile():
   try:
-    return render_template("profile.html", userdic = session['user'])
+    print(session['user'])
+    return render_template("profile.html", userdic = db.child("Volunteers").child(session['userID']).get().val())
   except:
     return redirect(url_for("error"))
 
@@ -71,7 +72,8 @@ def gallery():
 @app.route("/signin", methods = ["GET","POST"])
 def signin():
   if request.method == "POST":
-    session['user'] = auth.sign_in_with_email_and_password()
+    session['user'] = auth.sign_in_with_email_and_password(request.form['email'],request.form['password'])
+    session['userID'] = session['user']["localId"]
     return redirect(url_for("main"))
   else:
     return render_template("signin.html")
